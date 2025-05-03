@@ -32,8 +32,17 @@ async function PostPessoas(params) {
   return queryResult.rows;
 }
 
+async function DeletePessoas(id) {
+  const sql = `DELETE FROM pessoa WHERE idpessoa = $1`;
+  const values = [id];
+
+  const queryResult = await db.query(sql, values);
+  return queryResult.rows;
+}
+
 module.exports = {
   GetPessoas,
   GetPessoasById,
-  PostPessoas
+  PostPessoas,
+  DeletePessoas
 };

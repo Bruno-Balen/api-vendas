@@ -198,7 +198,32 @@
               "description": "Erro interno do servidor"
             }
           }
+        },
+        "delete": {
+          "summary": "Deleta uma pessoa pelo ID",
+          "description": "Remove uma pessoa específica do sistema com base no ID fornecido.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "ID da pessoa a ser deletada",
+              "type": "integer",
+              "example": 1
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Pessoa deletada com sucesso"
+            },
+            "404": {
+              "description": "Pessoa não encontrada"
+            },
+            "500": {
+              "description": "Erro interno do servidor"
+            }
+          }
         }
       }
     }
-  }
+}

@@ -62,8 +62,37 @@ async function PostPessoas(req, res) {
       }
 }
 
+async function DeletePessoas(req, res) {
+  const { id } = req.params;
+  try {
+    const result = await pessoas.GetPessoasById(id);
+    if (!result) {
+      return res.status(404).json({
+        status: 'error',
+        message: 'Pessoa não encontrada'
+      });
+    }
+    pessoas.DeletePessoas(id);
+    return res.status(200).json({
+      status: 'ok',
+      message: 'Pessoa deletada com sucesso',
+      data: result
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: 'error',
+      message: 'Erro do servidor',
+      error: error.message
+    });
+  }
+}
+
+
+
+
 module.exports = {
   GetPessoas,
   GetPessoasById,
-  PostPessoas
+  PostPessoas,
+  DeletePessoas
 };
