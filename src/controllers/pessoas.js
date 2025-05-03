@@ -87,12 +87,46 @@ async function DeletePessoas(req, res) {
   }
 }
 
+async function PutPesseoas(req, res) {
+  const { id } = req.params;
+  const { nome, email, telefone, endereco, codpessoa, datanasc } = req.body;
 
+  try {
+    const pessoaExistente = await pessoas.GetPessoasById(id);
+    if (pessoaExistente.length === 0) {
+      return res.status(404).json({
+        status: 'error',
+        message: 'Pessoa não encontrada'
+      });
+    }
 
+    const pessoaAtualizada = await pessoas.PutPessoas(id, {
+      nome,
+      email,
+      telefone,
+      endereco,
+      codpessoa,
+      datanasc
+    });
+
+    return res.status(200).json({
+      status: 'ok',
+      message: 'Pessoa atualizada com sucesso',
+      data: pessoaAtualizada
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: 'error',
+      message: 'Erro do servidor',
+      error: error.message
+    });
+  }
+}
 
 module.exports = {
   GetPessoas,
   GetPessoasById,
   PostPessoas,
-  DeletePessoas
+  DeletePessoas,
+  PutPesseoas
 };

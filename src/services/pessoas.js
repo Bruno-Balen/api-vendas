@@ -40,9 +40,20 @@ async function DeletePessoas(id) {
   return queryResult.rows;
 }
 
+async function PutPessoas(id, params) {
+  const sql = `UPDATE pessoa SET nome = $1, email = $2, telefone = $3, codpessoa = $4, datanasc = $5 WHERE idpessoa = $6 RETURNING *`;
+
+  const { nome, email, telefone,  codpessoa, datanasc } = params;
+  const values = [nome, email, telefone, codpessoa, datanasc, id];
+
+  const queryResult = await db.query(sql, values);
+  return queryResult.rows[0];
+}
+
 module.exports = {
   GetPessoas,
   GetPessoasById,
   PostPessoas,
-  DeletePessoas
+  DeletePessoas,
+  PutPessoas
 };

@@ -223,6 +223,98 @@
               "description": "Erro interno do servidor"
             }
           }
+        },
+        "put": {
+          "summary": "Atualiza uma pessoa pelo ID",
+          "description": "Atualiza os dados de uma pessoa específica com base no ID fornecido.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "ID da pessoa a ser atualizada",
+              "type": "integer",
+              "example": 1
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "description": "Dados atualizados da pessoa",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string",
+                    "example": "João da Silva"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "joao.silva@email.com"
+                  },
+                  "telefone": {
+                    "type": "string",
+                    "example": "(11) 91234-5678"
+                  },
+                  "datanasc": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "1990-01-01"
+                  },
+                  "codpessoa": {
+                    "type": "integer",
+                    "example": 210
+                  }
+                },
+                "required": ["nome", "email", "telefone", "datanasc", "endereco", "codpessoa"]
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Pessoa atualizada com sucesso",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "nome": {
+                    "type": "string",
+                    "example": "João da Silva"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "joao.silva@email.com"
+                  },
+                  "telefone": {
+                    "type": "string",
+                    "example": "(11) 91234-5678"
+                  },
+                  "datanasc": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "1990-01-01"
+                  },
+                  "endereco": {
+                    "type": "string",
+                    "example": "Rua das Flores, 123"
+                  },
+                  "codpessoa": {
+                    "type": "integer",
+                    "example": 210
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Pessoa não encontrada"
+            },
+            "500": {
+              "description": "Erro interno do servidor"
+            }
+          }
         }
       }
     }
