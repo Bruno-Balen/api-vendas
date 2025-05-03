@@ -1,4 +1,4 @@
-const exampleRoute = require('./vendas');
+const exampleRoute = require('./pessoas');
 
 module.exports = (app) => {
   exampleRoute(app);

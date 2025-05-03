@@ -3,10 +3,57 @@
     "info": {
       "version": "1.0.0",
       "title": "API de Vendas",
-      "description": "Documentação inicial da API de Vendas"
+      "description": "Documentação da API de Vendas"
     },
     "host": "localhost:3000",
     "basePath": "/",
     "schemes": ["http"],
-    "paths": {}
+    "paths": {
+      "/pessoas": {
+        "get": {
+          "summary": "Lista todas as pessoas",
+          "description": "Retorna uma lista de todas as pessoas cadastradas.",
+          "responses": {
+            "200": {
+              "description": "Lista de pessoas retornada com sucesso",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "nome": {
+                      "type": "string",
+                      "example": "João da Silva"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "joao.silva@email.com"
+                    },
+                    "telefone": {
+                      "type": "string",
+                      "example": "(11) 91234-5678"
+                    },
+                    "endereco": {
+                      "type": "string",
+                      "example": "Rua das Flores, 123"
+                    },
+                    "codigo": {
+                      "type": "string",
+                      "example": "201"
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Erro interno do servidor"
+            }
+          }
+        }
+      }
+    }
   }
