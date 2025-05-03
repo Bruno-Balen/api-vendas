@@ -54,6 +54,63 @@
             }
           }
         }
+      },
+      "/pessoas/{id}": {
+        "get": {
+          "summary": "Busca uma pessoa pelo ID",
+          "description": "Retorna os dados de uma pessoa específica com base no ID fornecido.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "ID da pessoa a ser buscada",
+              "type": "integer",
+              "example": 1
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Dados da pessoa retornados com sucesso",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "idpessoa": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "nome": {
+                    "type": "string",
+                    "example": "João da Silva"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "joao.silva@email.com"
+                  },
+                  "datanasc": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "1990-01-01"
+                  },
+                  "telefone": {
+                    "type": "string",
+                    "example": "(11) 91234-5678"
+                  },
+                  "codpesseoa": {
+                    "type": "integer",
+                    "example": "201"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Pessoa não encontrada"
+            },
+            "500": {
+              "description": "Erro interno do servidor"
+            }
+          }
+        }
       }
     }
   }
