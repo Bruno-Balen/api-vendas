@@ -42,12 +42,100 @@
                       "example": "Rua das Flores, 123"
                     },
                     "codigo": {
-                      "type": "string",
-                      "example": "201"
+                      "type": "integer",
+                      "example": 210
                     }
                   }
                 }
               }
+            },
+            "500": {
+              "description": "Erro interno do servidor"
+            }
+          }
+        },
+        "post": {
+          "summary": "Cria uma nova pessoa",
+          "description": "Adiciona uma nova pessoa ao sistema com todos os campos obrigatórios.",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "description": "Dados da pessoa a ser criada",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string",
+                    "example": "João da Silva"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "joao.silva@email.com"
+                  },
+                  "telefone": {
+                    "type": "string",
+                    "example": "(11) 91234-5678"
+                  },
+                  "datanasc": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "1990-01-01"
+                  },
+                  "endereco": {
+                    "type": "string",
+                    "example": "Rua das Flores, 123"
+                  },
+                  "codpessoa": {
+                    "type": "integer",
+                    "example": 210
+                  }
+                },
+                "required": ["nome", "email", "telefone", "datanasc" ,"endereco", "codpessoa"]
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Pessoa criada com sucesso",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "nome": {
+                    "type": "string",
+                    "example": "João da Silva"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "joao.silva@email.com"
+                  },
+                  "telefone": {
+                    "type": "string",
+                    "example": "(11) 91234-5678"
+                  },
+                  "datanasc": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "1990-01-01"
+                  },
+                  "endereco": {
+                    "type": "string",
+                    "example": "Rua das Flores, 123"
+                  },
+                  "codigo": {
+                    "type": "integer",
+                    "example": 210
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Campos obrigatórios faltando"
             },
             "500": {
               "description": "Erro interno do servidor"

@@ -29,7 +29,7 @@ async function GetPessoasById(req, res) {
       status: 'ok',
       data: pessoa
     });
-    
+
   } catch (error) {
     return res.status(500).json({
       status: 'error',
@@ -39,7 +39,31 @@ async function GetPessoasById(req, res) {
   }
 }
 
+async function PostPessoas(req, res) {
+    try {
+        if (!req.body.nome) {
+          return res.status(400).json({
+            status: 'error',
+            message: 'Campos obrigatórios faltando'
+          })
+        }
+        const result = await pessoas.PostPessoas(req.body);
+        return res.status(201).json({
+          status: 'ok',
+          message: 'Pessoa cadastrada com sucesso',
+          data: result
+        });
+      } catch (error) {
+        return res.status(500).json({
+          status: 'error',
+          message: 'Erro do servidor',
+          error: error.message
+        })
+      }
+}
+
 module.exports = {
   GetPessoas,
-  GetPessoasById
+  GetPessoasById,
+  PostPessoas
 };
