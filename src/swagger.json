@@ -1,0 +1,12 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "API de Vendas",
+      "description": "Documentação inicial da API de Vendas"
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "schemes": ["http"],
+    "paths": {}
+  }
