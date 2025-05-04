@@ -316,6 +316,516 @@
             }
           }
         }
+      },
+      "/clientes": {
+        "get": {
+          "summary": "Listar clientes",
+          "description": "Retorna uma lista de todos os clientes.",
+          "responses": {
+            "200": {
+              "description": "Lista de clientes retornada com sucesso"
+            }
+          }
+        },
+        "post": {
+          "summary": "Criar cliente",
+          "description": "Cria um novo cliente associando a uma pessoa.",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "codcliente": { "type": "integer" },
+                  "idpessoa": { "type": "integer" }
+                },
+                "required": ["codcliente", "idpessoa"]
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Cliente criado com sucesso"
+            }
+          }
+        }
+      },
+      "/clientes/{id}": {
+        "get": {
+          "summary": "Detalhes de um cliente",
+          "description": "Retorna os detalhes de um cliente específico.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Detalhes do cliente retornados com sucesso"
+            }
+          }
+        },
+        "put": {
+          "summary": "Atualizar cliente",
+          "description": "Atualiza os dados de um cliente específico.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "codcliente": { "type": "integer" },
+                  "idpessoa": { "type": "integer" }
+                },
+                "required": ["codcliente", "idpessoa"]
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Cliente atualizado com sucesso"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Deletar cliente",
+          "description": "Remove um cliente específico do sistema.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Cliente deletado com sucesso"
+            }
+          }
+        }
+      },
+      "/funcionarios": {
+        "get": {
+          "summary": "Listar funcionários",
+          "description": "Retorna uma lista de todos os funcionários.",
+          "responses": {
+            "200": {
+              "description": "Lista de funcionários retornada com sucesso"
+            }
+          }
+        },
+        "post": {
+          "summary": "Criar funcionário",
+          "description": "Cria um novo funcionário associando a uma pessoa.",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "salario": { "type": "number" },
+                  "cargo": { "type": "string" },
+                  "idpessoa": { "type": "integer" },
+                  "codfuncionario": { "type": "integer" }
+                },
+                "required": ["salario", "cargo", "idpessoa", "codfuncionario"]
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Funcionário criado com sucesso"
+            }
+          }
+        }
+      },
+      "/funcionarios/{id}": {
+        "get": {
+          "summary": "Detalhes de um funcionário",
+          "description": "Retorna os detalhes de um funcionário específico.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Detalhes do funcionário retornados com sucesso"
+            }
+          }
+        },
+        "put": {
+          "summary": "Atualizar funcionário",
+          "description": "Atualiza os dados de um funcionário específico.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "salario": { "type": "number" },
+                  "cargo": { "type": "string" },
+                  "idpessoa": { "type": "integer" },
+                  "codfuncionario": { "type": "integer" }
+                },
+                "required": ["salario", "cargo", "idpessoa", "codfuncionario"]
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Funcionário atualizado com sucesso"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Deletar funcionário",
+          "description": "Remove um funcionário específico do sistema.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Funcionário deletado com sucesso"
+            }
+          }
+        }
+      },
+      "/categorias": {
+        "get": {
+          "summary": "Listar categorias",
+          "description": "Retorna uma lista de todas as categorias.",
+          "responses": {
+            "200": {
+              "description": "Lista de categorias retornada com sucesso"
+            }
+          }
+        }
+      },
+      "/categorias/{id}": {
+        "get": {
+          "summary": "Detalhes de uma categoria",
+          "description": "Retorna os detalhes de uma categoria específica.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Detalhes da categoria retornados com sucesso"
+            }
+          }
+        }
+      },
+      "/produtos": {
+        "get": {
+          "summary": "Listar produtos",
+          "description": "Retorna uma lista de todos os produtos.",
+          "responses": {
+            "200": {
+              "description": "Lista de produtos retornada com sucesso"
+            }
+          }
+        },
+        "post": {
+          "summary": "Criar produto",
+          "description": "Cria um novo produto associando a uma categoria.",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "codproduto": { "type": "integer" },
+                  "nome": { "type": "string" },
+                  "preco": { "type": "number" },
+                  "qntestoque": { "type": "integer" },
+                  "idcategoria": { "type": "integer" }
+                },
+                "required": ["codproduto", "nome", "preco", "qntestoque", "idcategoria"]
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Produto criado com sucesso"
+            }
+          }
+        }
+      },
+      "/produtos/{id}": {
+        "get": {
+          "summary": "Detalhes de um produto",
+          "description": "Retorna os detalhes de um produto específico.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Detalhes do produto retornados com sucesso"
+            }
+          }
+        },
+        "put": {
+          "summary": "Atualizar produto",
+          "description": "Atualiza os dados de um produto específico.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "codproduto": { "type": "integer" },
+                  "nome": { "type": "string" },
+                  "preco": { "type": "number" },
+                  "qntestoque": { "type": "integer" },
+                  "idcategoria": { "type": "integer" }
+                },
+                "required": ["codproduto", "nome", "preco", "qntestoque", "idcategoria"]
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Produto atualizado com sucesso"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Deletar produto",
+          "description": "Remove um produto específico do sistema.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Produto deletado com sucesso"
+            }
+          }
+        }
+      },
+      "/produtos/categoria/{idcategoria}": {
+        "get": {
+          "summary": "Listar produtos de uma categoria",
+          "description": "Retorna uma lista de produtos associados a uma categoria específica.",
+          "parameters": [
+            {
+              "name": "idcategoria",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Lista de produtos retornada com sucesso"
+            }
+          }
+        }
+      },
+      "/vendas": {
+        "get": {
+          "summary": "Listar vendas",
+          "description": "Retorna uma lista de todas as vendas.",
+          "responses": {
+            "200": {
+              "description": "Lista de vendas retornada com sucesso"
+            }
+          }
+        },
+        "post": {
+          "summary": "Criar venda",
+          "description": "Cria uma nova venda associando cliente e funcionário.",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": { "type": "string", "format": "date" },
+                  "idfuncionario": { "type": "integer" },
+                  "valor": { "type": "number" },
+                  "idcliente": { "type": "integer" }
+                },
+                "required": ["data", "idfuncionario", "valor", "idcliente"]
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Venda criada com sucesso"
+            }
+          }
+        }
+      },
+      "/vendas/{id}": {
+        "get": {
+          "summary": "Detalhes de uma venda",
+          "description": "Retorna os detalhes de uma venda específica.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Detalhes da venda retornados com sucesso"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Deletar venda",
+          "description": "Remove uma venda específica do sistema.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Venda deletada com sucesso"
+            }
+          }
+        }
+      },
+      "/vendas/{id}/produtos": {
+        "get": {
+          "summary": "Listar produtos de uma venda",
+          "description": "Retorna uma lista de produtos associados a uma venda específica.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Lista de produtos retornada com sucesso"
+            }
+          }
+        },
+        "post": {
+          "summary": "Adicionar produto à venda",
+          "description": "Adiciona um produto a uma venda específica.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "idproduto": { "type": "integer" },
+                  "quantidade": { "type": "integer" },
+                  "valor": { "type": "number" }
+                },
+                "required": ["idproduto", "quantidade", "valor"]
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Produto adicionado à venda com sucesso"
+            }
+          }
+        }
+      },
+      "/vendas/{id}/produtos/{idproduto}": {
+        "delete": {
+          "summary": "Remover produto da venda",
+          "description": "Remove um produto de uma venda específica.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            },
+            {
+              "name": "idproduto",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Produto removido da venda com sucesso"
+            }
+          }
+        }
       }
     }
 }
