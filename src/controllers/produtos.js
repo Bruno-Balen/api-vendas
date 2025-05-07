@@ -39,6 +39,29 @@ async function GetProdutosById(req, res) {
   }
 }
 
+async function GetProdutosByCategoria(req, res) {
+  const { idcategoria } = req.params;
+  try {
+    const produtos = await ProdutosService.GetProdutosByCategoria(idcategoria);
+    if (!produtos || produtos.length === 0) {
+      return res.status(404).json({
+        status: 'error',
+        message: 'Produtos não encontrados'
+      });
+    }
+    return res.status(200).json({
+      status: 'ok',
+      data: produtos
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: 'error',
+      message: 'Erro do servidor',
+      error: error.message
+    });
+  }
+}
+
 async function PostProduto(req, res) {
   try {
     const { codproduto, nome, preco, qntestoque, idcategoria } = req.body;
@@ -123,5 +146,6 @@ module.exports = {
   GetProdutosById,
   PostProduto,
   DeleteProduto,
-  PutProduto
+  PutProduto,
+  GetProdutosByCategoria
 };

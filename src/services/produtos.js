@@ -15,6 +15,16 @@ async function GetProdutosById(id) {
   return queryResult.rows[0];
 }
 
+async function GetProdutosByCategoria(id) {
+  const sql = `SELECT * 
+               FROM PRODUTO
+               WHERE idcategoria = $1`;
+  const values = [id];
+
+  const queryResult = await db.query(sql, values);
+  return queryResult.rows;
+}
+
 async function PostProduto(params) {
   const sql = `INSERT INTO produto (codproduto, nome, preco, qntestoque, idcategoria) VALUES ($1, $2, $3, $4, $5) RETURNING *`;
 
@@ -50,5 +60,6 @@ module.exports = {
     GetProdutosById,
     PostProduto,
     DeleteProduto,
-    PutProduto
+    PutProduto,
+    GetProdutosByCategoria
  };
