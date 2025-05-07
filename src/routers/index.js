@@ -1,5 +1,7 @@
-const exampleRoute = require('./pessoas');
+const pessoasRoute = require('./pessoas');
+const categoriasRoutes = require('./categorias');
 
 module.exports = (app) => {
-  exampleRoute(app);
+  pessoasRoute(app),
+  categoriasRoutes(app);
 }
