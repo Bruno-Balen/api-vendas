@@ -955,6 +955,136 @@
               "description": "Produto removido da venda com sucesso"
             }
           }
+        },
+        "put": {
+          "summary": "Atualizar produto de uma venda",
+          "description": "Atualiza os dados de um produto associado a uma venda específica.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "ID da venda",
+              "schema": {
+                "type": "integer"
+              }
+            },
+            {
+              "name": "idproduto",
+              "in": "path",
+              "required": true,
+              "description": "ID do produto a ser atualizado na venda",
+              "schema": {
+                "type": "integer"
+              }
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "description": "Dados do produto a serem atualizados",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "quantidade": {
+                    "type": "integer",
+                    "description": "Nova quantidade do produto"
+                  },
+                  "valor": {
+                    "type": "number",
+                    "description": "Novo valor do produto"
+                  }
+                },
+                "required": ["quantidade", "valor"]
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Produto atualizado com sucesso",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string",
+                        "example": "ok"
+                      },
+                      "message": {
+                        "type": "string",
+                        "example": "Produto da venda atualizado com sucesso"
+                      },
+                      "data": {
+                        "type": "object",
+                        "description": "Dados do produto atualizado"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Erro de validação nos dados enviados",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string",
+                        "example": "error"
+                      },
+                      "message": {
+                        "type": "string",
+                        "example": "Campos obrigatórios faltando"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Produto ou venda não encontrado",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string",
+                        "example": "error"
+                      },
+                      "message": {
+                        "type": "string",
+                        "example": "Produto não encontrado na venda"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Erro interno do servidor",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string",
+                        "example": "error"
+                      },
+                      "message": {
+                        "type": "string",
+                        "example": "Erro do servidor"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
