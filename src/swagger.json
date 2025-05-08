@@ -750,6 +750,136 @@
               "description": "Venda deletada com sucesso"
             }
           }
+        },
+        "put": {
+          "summary": "Atualizar uma venda",
+          "description": "Atualiza os dados de uma venda existente, como valor, idcliente, idfuncionario e data.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "ID da venda a ser atualizada",
+              "schema": {
+                "type": "integer"
+              }
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "description": "Dados da venda a serem atualizados",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "idfuncionario": {
+                    "type": "integer",
+                    "description": "ID do funcionário responsável pela venda"
+                  },
+                  "idcliente": {
+                    "type": "integer",
+                    "description": "ID do cliente associado à venda"
+                  },
+                  "valor": {
+                    "type": "number",
+                    "description": "Valor total da venda"
+                  },
+                  "data": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Data da venda no formato YYYY-MM-DD"
+                  }
+                },
+                "required": ["idfuncionario", "idcliente", "valor", "data"]
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Venda atualizada com sucesso",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string",
+                        "example": "ok"
+                      },
+                      "message": {
+                        "type": "string",
+                        "example": "Venda atualizada com sucesso"
+                      },
+                      "data": {
+                        "type": "object",
+                        "description": "Dados da venda atualizada"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Erro de validação nos dados enviados",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string",
+                        "example": "error"
+                      },
+                      "message": {
+                        "type": "string",
+                        "example": "Campos obrigatórios faltando"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Venda não encontrada",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string",
+                        "example": "error"
+                      },
+                      "message": {
+                        "type": "string",
+                        "example": "Venda não encontrada"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Erro interno do servidor",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string",
+                        "example": "error"
+                      },
+                      "message": {
+                        "type": "string",
+                        "example": "Erro do servidor"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       },
       "/vendas/{id}/produtos": {
